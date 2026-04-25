@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,28 +18,28 @@
 </style>
 <style>
   :root {
-    --primary: #002233;
+    --primary: #00dbff;
     --accent: #00dbff;
-    --accent-dim: rgba(0,219,255,0.12);
-    --accent-dim2: rgba(0,219,255,0.06);
-    --bg: #ffffff;
-    --bg2: #f5f7f8;
-    --bg3: #eef1f3;
-    --border: #dde2e6;
-    --border-light: #eef1f3;
-    --text: #002233;
-    --text-muted: #4a6070;
-    --text-faint: #8aa0ae;
-    --success: #0d7a4e;
-    --success-bg: #e6f5ef;
-    --danger: #c0392b;
-    --danger-bg: #fdf0ef;
-    --warn-bg: #fff8e6;
-    --warn: #8a5c00;
+    --accent-dim: rgba(0,219,255,0.15);
+    --accent-dim2: rgba(0,219,255,0.07);
+    --bg: #0f1923;
+    --bg2: #0a1018;
+    --bg3: #162030;
+    --border: #1e3040;
+    --border-light: #172535;
+    --text: #d8eaf5;
+    --text-muted: #7aa0b8;
+    --text-faint: #4a6878;
+    --success: #1dbe78;
+    --success-bg: rgba(29,190,120,0.12);
+    --danger: #e05050;
+    --danger-bg: rgba(224,80,80,0.12);
+    --warn-bg: rgba(240,180,40,0.10);
+    --warn: #e0a030;
     --radius: 8px;
     --radius-lg: 12px;
-    --shadow: 0 1px 3px rgba(0,34,51,0.08), 0 1px 2px rgba(0,34,51,0.04);
-    --shadow-md: 0 4px 12px rgba(0,34,51,0.10);
+    --shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -121,7 +122,7 @@
     white-space: nowrap;
   }
   .nav-tab:hover { color: var(--text); }
-  .nav-tab.active { color: var(--primary); border-bottom-color: var(--accent); }
+  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
   /* ── LAYOUT ── */
   main { max-width: 1400px; margin: 0 auto; padding: 2rem; }
@@ -175,7 +176,7 @@
   }
   .metric-card:hover::before { opacity: 1; }
   .metric-label { font-size: 11px; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
-  .metric-value { font-size: 26px; font-weight: 600; color: var(--primary); font-family: 'DM Mono', monospace; line-height: 1.1; }
+  .metric-value { font-size: 26px; font-weight: 600; color: var(--accent); font-family: 'DM Mono', monospace; line-height: 1.1; }
   .metric-sub { font-size: 11px; color: var(--text-faint); margin-top: 4px; }
 
   /* ── CARDS ── */
@@ -296,7 +297,7 @@
   .motivo-bar-wrap { flex: 1; height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
   .motivo-bar { height: 100%; background: var(--accent); border-radius: 3px; transition: width .4s; }
   .motivo-label { width: 200px; font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .motivo-count { font-size: 12px; font-weight: 500; color: var(--primary); min-width: 24px; text-align: right; font-family: 'DM Mono', monospace; }
+  .motivo-count { font-size: 12px; font-weight: 500; color: var(--accent); min-width: 24px; text-align: right; font-family: 'DM Mono', monospace; }
 
   /* ── TEMPO MÉDIO ── */
   .tempo-insight {
@@ -305,8 +306,38 @@
   }
   .tempo-insight:last-child { border-bottom: none; }
   .tempo-area { font-size: 12px; color: var(--text-muted); width: 160px; }
-  .tempo-val { font-size: 20px; font-weight: 600; color: var(--primary); font-family: 'DM Mono', monospace; min-width: 48px; }
+  .tempo-val { font-size: 20px; font-weight: 600; color: var(--accent); font-family: 'DM Mono', monospace; min-width: 48px; }
   .tempo-unit { font-size: 11px; color: var(--text-faint); }
+
+  /* ── MKT CONT CHECKS ── */
+  .mkt-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg2);
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    user-select: none;
+  }
+  .mkt-check-item:hover { border-color: var(--accent); background: var(--accent-dim); }
+  .mkt-check-item.checked { border-color: var(--accent); background: var(--accent-dim); }
+  .mkt-check-item input[type=checkbox] { display: none; }
+  .mkt-check-box {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; transition: all .15s;
+    background: var(--bg);
+  }
+  .mkt-check-item.checked .mkt-check-box {
+    background: var(--accent); border-color: var(--accent); color: var(--bg);
+  }
+  .mkt-check-label { font-size: 12px; color: var(--text-muted); }
+  .mkt-check-item.checked .mkt-check-label { color: var(--text); font-weight: 500; }
 
   @media (max-width: 768px) {
     main { padding: 1rem; }
@@ -555,6 +586,7 @@
             <option value="Erro de execução (lado criativo)">Erro de execução (lado criativo)</option>
             <option value="Aprovação por terceiro não previsto">Aprovação por terceiro não previsto</option>
             <option value="Prazo insuficiente">Prazo insuficiente</option>
+            <option value="Direcional insuficiente sobre o produto">Direcional insuficiente sobre o produto</option>
           </select>
         </div>
         <div class="form-group">
@@ -569,6 +601,19 @@
         <div class="form-group">
           <label>Asset reutilizado (qual?)</label>
           <input type="text" id="fn-asset" placeholder="Nome ou link do asset...">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Aderência ao manual de marca e comunicação da empresa</label>
+          <select id="fn-aderencia">
+            <option value="">Selecione...</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Criativos com alguma narrativa de Marketing Contínuo</label>
+          <div id="mkt-checks-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin-top:6px"></div>
+          <div style="font-size:11px;color:var(--text-faint);margin-top:6px">Marque cada criativo realizado com narrativa de Marketing Contínuo. O contador no dashboard atualiza automaticamente.</div>
         </div>
         <div class="form-group" style="grid-column:1/-1">
           <label>Entrega final (link ou descrição)</label>
@@ -663,6 +708,7 @@
           <option value="Erro de execução (lado criativo)">Erro de execução (lado criativo)</option>
           <option value="Aprovação por terceiro não previsto">Aprovação por terceiro não previsto</option>
           <option value="Prazo insuficiente">Prazo insuficiente</option>
+          <option value="Direcional insuficiente sobre o produto">Direcional insuficiente sobre o produto</option>
         </select>
       </div>
       <div class="form-group">
@@ -677,6 +723,14 @@
       <div class="form-group">
         <label>Asset reutilizado (qual?)</label>
         <input type="text" id="ed-asset">
+      </div>
+      <div class="form-group" style="grid-column:1/-1">
+        <label>Aderência ao manual de marca e comunicação da empresa</label>
+        <select id="ed-aderencia">
+          <option value="">Selecione...</option>
+          <option value="Sim">Sim</option>
+          <option value="Não">Não</option>
+        </select>
       </div>
       <div class="form-group" style="grid-column:1/-1">
         <label>Entrega final</label>
@@ -714,6 +768,7 @@ function switchTab(t) {
   });
   if (t === 'dashboard') updateDashboard();
   if (t === 'lista') renderLista();
+  if (t === 'nova') renderMktChecks();
 }
 
 // ── FORM ──
@@ -741,6 +796,7 @@ function salvarDemanda() {
     motivo:      document.getElementById('fn-motivo').value.trim(),
     assetBool:   document.getElementById('fn-asset-bool').value,
     asset:       document.getElementById('fn-asset').value.trim(),
+    aderencia:   document.getElementById('fn-aderencia').value,
     entregaFinal:document.getElementById('fn-entrega-final').value.trim()
   };
   demandas.push(d);
@@ -753,7 +809,7 @@ function salvarDemanda() {
 function limparForm() {
   ['fn-nome','fn-jira','fn-owner','fn-area','fn-inicio','fn-entrega','fn-asset','fn-entrega-final']
     .forEach(id => document.getElementById(id).value = '');
-  ['fn-prazo','fn-aprov','fn-comprovante','fn-asset-bool','fn-motivo']
+  ['fn-prazo','fn-aprov','fn-comprovante','fn-asset-bool','fn-motivo','fn-aderencia']
     .forEach(id => document.getElementById(id).value = '');
   document.getElementById('fn-refacoes').value = '0';
   document.getElementById('fn-comprovante-link').value = '';
@@ -866,6 +922,17 @@ function updateDashboard() {
   const totalRef    = demandas.reduce((s, d) => s + d.refacoes, 0);
   const assetsReut  = demandas.filter(d => d.assetBool === 'Sim').length;
 
+  // Aderência ao manual de marca
+  const totalComAderencia = demandas.filter(d => d.aderencia === 'Sim' || d.aderencia === 'Não').length;
+  const aderenciaSim = demandas.filter(d => d.aderencia === 'Sim').length;
+  const pctAderencia = totalComAderencia > 0 ? Math.round(aderenciaSim / totalComAderencia * 100) : 0;
+
+  // Criativos Mkt Contínuo — lê do contador global (checkmarks)
+  const mktContTotal = 10;
+  const mktContChecks = JSON.parse(localStorage.getItem('mktContChecks') || '[]');
+  const mktContFeitos = mktContChecks.filter(Boolean).length;
+  const pctMktCont = Math.min(Math.round(mktContFeitos / mktContTotal * 100), 100);
+
   // Tempo médio geral
   const comDatas = demandas.filter(d => d.inicio && d.entrega);
   const tempoMedioGeral = comDatas.length
@@ -877,8 +944,21 @@ function updateDashboard() {
     <div class="metric-card"><div class="metric-label">Prazo cumprido</div><div class="metric-value">${pct(prazoCump,total)}%</div><div class="metric-sub">${prazoCump} de ${total}</div></div>
     <div class="metric-card"><div class="metric-label">Aprovação 1ª</div><div class="metric-value">${pct(aprovPrim,total)}%</div><div class="metric-sub">${aprovPrim} de ${total}</div></div>
     <div class="metric-card"><div class="metric-label">Total de refações</div><div class="metric-value">${totalRef}</div><div class="metric-sub">média ${total ? parseFloat((totalRef/total).toFixed(1)) : 0} / demanda</div></div>
-    <div class="metric-card"><div class="metric-label">Assets reutilizados</div><div class="metric-value">${assetsReut}</div><div class="metric-sub">${pct(assetsReut,total)}% das demandas</div></div>
     <div class="metric-card"><div class="metric-label">Tempo médio entrega</div><div class="metric-value">${tempoMedioGeral !== null ? tempoMedioGeral : '—'}</div><div class="metric-sub">dias (geral)</div></div>
+    <div class="metric-card" style="border-top:3px solid var(--accent);grid-column:span 1">
+      <div class="metric-label">Aderência ao checklist de marca</div>
+      <div class="metric-value" style="font-size:28px">${pctAderencia}%</div>
+      <div style="margin:8px 0 4px;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:${pctAderencia}%;background:var(--accent);border-radius:3px;transition:width .4s"></div></div>
+      <div class="metric-sub">${aderenciaSim} de ${totalComAderencia} peças auditadas · meta ≥ 80%</div>
+      <div class="metric-sub" style="margin-top:4px;font-size:10px;opacity:.7">Alcançar ≥ 80% de aderência ao checklist de marca e comunicação nas peças auditadas mensalmente</div>
+    </div>
+    <div class="metric-card" style="border-top:3px solid ${pctMktCont >= 100 ? 'var(--success)' : 'var(--accent)'};grid-column:span 1">
+      <div class="metric-label">Criativos — Marketing Contínuo</div>
+      <div class="metric-value" style="font-size:28px">${mktContFeitos}<span style="font-size:14px;font-weight:400;color:var(--text-faint)"> / ${mktContTotal}</span></div>
+      <div style="margin:8px 0 4px;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden"><div style="height:100%;width:${pctMktCont}%;background:${pctMktCont >= 100 ? 'var(--success)' : 'var(--accent)'};border-radius:3px;transition:width .4s"></div></div>
+      <div class="metric-sub">${pctMktCont}% da meta semestral (≥ 10 criativos)</div>
+      <div class="metric-sub" style="margin-top:4px;font-size:10px;opacity:.7">Diferentes formatos, níveis de consciência e mín. 4 variações por conceito</div>
+    </div>
   `;
 
   // Alerta
@@ -972,6 +1052,7 @@ function updateDashboard() {
     'Erro de execução (lado criativo)',
     'Aprovação por terceiro não previsto',
     'Prazo insuficiente',
+    'Direcional insuficiente sobre o produto',
   ];
 
   const motivosMap = {};
@@ -1220,6 +1301,7 @@ function editarDemanda(id) {
   edMotivo.value = d.motivo || '';
   document.getElementById('ed-asset-bool').value = d.assetBool || '';
   document.getElementById('ed-asset').value   = d.asset || '';
+  document.getElementById('ed-aderencia').value = d.aderencia || '';
   document.getElementById('ed-entrega-final').value = d.entregaFinal || '';
   document.getElementById('ed-msg').className = 'form-msg';
   document.getElementById('ed-msg').textContent = '';
@@ -1257,6 +1339,7 @@ function salvarEdicao() {
     motivo:           document.getElementById('ed-motivo').value.trim(),
     assetBool:        document.getElementById('ed-asset-bool').value,
     asset:            document.getElementById('ed-asset').value.trim(),
+    aderencia:        document.getElementById('ed-aderencia').value,
     entregaFinal:     document.getElementById('ed-entrega-final').value.trim(),
   };
   salvarStorage();
@@ -1265,6 +1348,28 @@ function salvarEdicao() {
   updateDashboard();
 }
 
+// ── MKT CONT CHECKMARKS ──
+function renderMktChecks() {
+  const wrap = document.getElementById('mkt-checks-wrap');
+  if (!wrap) return;
+  const checks = JSON.parse(localStorage.getItem('mktContChecks') || JSON.stringify(new Array(10).fill(false)));
+  wrap.innerHTML = checks.map((checked, i) => `
+    <label class="mkt-check-item${checked ? ' checked' : ''}" onclick="toggleMktCheck(${i})">
+      <div class="mkt-check-box">${checked ? '✓' : ''}</div>
+      <span class="mkt-check-label">Criativo ${i + 1}</span>
+    </label>
+  `).join('');
+}
+
+function toggleMktCheck(idx) {
+  const checks = JSON.parse(localStorage.getItem('mktContChecks') || JSON.stringify(new Array(10).fill(false)));
+  checks[idx] = !checks[idx];
+  localStorage.setItem('mktContChecks', JSON.stringify(checks));
+  renderMktChecks();
+  updateDashboard();
+}
+
+// Renderiza checks sempre que a aba "nova" é aberta
 updateDashboard();
 </script>
 
